@@ -1,0 +1,287 @@
+﻿@page "/blog"
+@inject HttpClient Http
+@using TinyMCE.Blazor
+
+<PageTitle>BlogPost</PageTitle>
+
+<section class="post-hero">
+    <div class="container">
+        <div class="post-hero-content">
+            <div class="post-meta">
+                <span class="post-category">Web Development</span>
+                <span class="post-date">June 15, 2023 • 8 min read</span>
+            </div>
+
+
+
+            <h1 class="post-title">
+                <Editor Inline=true LicenseKey="9rzt2aipoddgs29qxtlmfgk8cxzli3zhg3xbqjusl7l4uyua" ScriptSrc="/lib/TinyMCE/tinymce.js" Value="Post Title" />
+            </h1>
+
+
+            <p class="post-excerpt">
+                <Editor Inline=true LicenseKey="9rzt2aipoddgs29qxtlmfgk8cxzli3zhg3xbqjusl7l4uyua" ScriptSrc="/lib/TinyMCE/tinymce.js" Value="An excertp" />
+                </p>
+                
+            <div class="author-info">
+                <img src="/images/pete.jpg" alt="Alex Morgan" class="author-avatar">
+                <div class="author-details">
+                    <div class="author-name">Pete Field</div>
+                    <div class="author-role">Technical Lead</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Content -->
+<section class="blog-content">
+    <div class="container">
+        <div class="content-block">
+            <Editor Inline=true LicenseKey="9rzt2aipoddgs29qxtlmfgk8cxzli3zhg3xbqjusl7l4uyua" 
+                ScriptSrc="/lib/TinyMCE/tinymce.js" 
+                Conf=@editorConf
+                Value=@content />
+
+
+            
+        </div>
+
+        <div class="post-image">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1000&auto=format" alt="React Development">
+            <div class="image-caption">React continues to evolve to meet modern development needs</div>
+        </div>
+
+        <div class="content-block">
+            <h2 class="content-title">The React Compiler: No More Manual Memoization</h2>
+            <p>One of the most anticipated features coming to React is the official compiler, currently codenamed "React Forget." This compiler will automatically optimize your components by intelligently applying memoization where needed.</p>
+
+            <p>For years, React developers have manually optimized components using useMemo, useCallback, and memo to prevent unnecessary re-renders. This process is not only time-consuming but also error-prone. The React compiler aims to solve this by analyzing your component tree and automatically applying these optimizations.</p>
+
+            <blockquote>
+                "The React compiler represents a fundamental shift in how we think about performance optimization. Instead of asking developers to manually memoize everything, we're building a compiler that can understand your component patterns and optimize them automatically." - React Core Team
+            </blockquote>
+
+            <p>Early benchmarks show significant performance improvements in complex applications, with some demos showing up to 30% reduction in rendering time. The compiler will be opt-in initially, but the long-term goal is to make it the default for all React applications.</p>
+        </div>
+
+        <div class="content-block">
+            <h2 class="content-title">Server Components: The Full Vision Realized</h2>
+            <p>Server Components, introduced in React 18, are set to become the recommended way to build data-heavy applications in 2024. The key benefits include:</p>
+
+            <ul>
+                <li>Zero bundle size for server-rendered components</li>
+                <li>Direct database access from components</li>
+                <li>Automatic code splitting at the component level</li>
+                <li>Improved caching strategies</li>
+            </ul>
+
+            <p>In 2024, we'll see the ecosystem mature with better tooling, improved documentation, and more frameworks offering first-class support for server components. The Next.js App Router has paved the way, but expect to see similar implementations in Remix, Gatsby, and other popular frameworks.</p>
+
+            <div class="code-block">
+                // Example of a React Server Component
+                async function UserProfile({ userId }) {
+                const user = await db.users.findUnique(userId);
+
+                return (
+                &lt;div&gt;
+                &lt;h2&gt;{user.name}&lt;/h2&gt;
+                &lt;UserPosts userId={userId} /&gt;
+                &lt;/div&gt;
+                );
+                }
+            </div>
+        </div>
+
+        <div class="post-image">
+            <img src="https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=1000&auto=format" alt="React Server Components Diagram">
+            <div class="image-caption">Server Components architecture diagram</div>
+        </div>
+
+        <div class="content-block">
+            <h2 class="content-title">Actions: Simplifying Data Mutations</h2>
+            <p>React 19 will introduce a new primitive called "Actions" that provides a standardized way to handle data mutations across client and server components. Actions are designed to simplify common patterns like form submissions, API calls, and database updates.</p>
+
+            <p>Key features of Actions include:</p>
+
+            <ul>
+                <li>Automatic pending state management</li>
+                <li>Optimistic updates out of the box</li>
+                <li>Integrated error handling</li>
+                <li>Support for progressive enhancement</li>
+            </ul>
+
+            <p>This abstraction will significantly reduce the boilerplate code needed for common data operations and make applications more resilient to network conditions.</p>
+        </div>
+
+        <div class="content-block">
+            <h2 class="content-title">Enhanced Developer Tooling</h2>
+            <p>The React DevTools are getting a major overhaul to better support the new features coming in React 19. The updated tools will include:</p>
+
+            <ul>
+                <li>Visualization of server component boundaries</li>
+                <li>Action debugging and tracing</li>
+                <li>Compiler optimization insights</li>
+                <li>Improved performance profiling</li>
+            </ul>
+
+            <p>Additionally, expect to see better integration with TypeScript, with improved type inference for server components and actions.</p>
+        </div>
+
+        <div class="content-block">
+            <h2 class="content-title">Preparing for the Future</h2>
+            <p>As we look toward React 19, there are several steps you can take to prepare your applications and team:</p>
+
+            <ol>
+                <li>Start experimenting with server components in a non-critical project</li>
+                <li>Audit your current memoization strategy to understand where the compiler might help</li>
+                <li>Familiarize yourself with React's new documentation and learning resources</li>
+                <li>Follow the React Working Group discussions on GitHub</li>
+                <li>Consider how actions might simplify your current data-fetching patterns</li>
+            </ol>
+
+            <p>The changes coming to React represent an exciting evolution of the library, one that promises to make building high-performance applications more accessible than ever. While there will be a learning curve, the long-term benefits to developer experience and application performance are substantial.</p>
+        </div>
+
+        <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Frontend</span>
+            <span class="tag">Web Development</span>
+            <span class="tag">React 19</span>
+        </div>
+
+        <div class="social-sharing">
+            <a href="#" class="share-btn"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="share-btn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#" class="share-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="share-btn"><i class="fab fa-link"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Related Posts -->
+<section class="related-posts">
+    <div class="container">
+        <h2 class="section-title">Related Articles</h2>
+        <p class="section-subtitle">Continue reading with these recommended posts</p>
+
+        <div class="posts-grid">
+            <div class="post-card">
+                <div class="post-card-image">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&auto=format" alt="Post 1">
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span class="post-category">UI Design</span>
+                        <span class="post-date">May 28, 2023</span>
+                    </div>
+                    <h3 class="post-title">Design Systems at Scale: Lessons from Enterprise</h3>
+                    <a href="#" class="read-more">Continue Reading</a>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <div class="post-card-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format" alt="Post 2">
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span class="post-category">Career</span>
+                        <span class="post-date">May 10, 2023</span>
+                    </div>
+                    <h3 class="post-title">From Junior to Senior: The Skills That Matter</h3>
+                    <a href="#" class="read-more">Continue Reading</a>
+                </div>
+            </div>
+
+            <div class="post-card">
+                <div class="post-card-image">
+                    <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&auto=format" alt="Post 3">
+                </div>
+                <div class="post-card-content">
+                    <div class="post-meta">
+                        <span class="post-category">Productivity</span>
+                        <span class="post-date">April 22, 2023</span>
+                    </div>
+                    <h3 class="post-title">Building a Second Brain for Developers</h3>
+                    <a href="#" class="read-more">Continue Reading</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Comments Section -->
+<section class="comments-section">
+    <div class="container">
+        <h2 class="comments-title">Join the Discussion</h2>
+
+        <div class="comment">
+            <div class="comment-header">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100&auto=format" alt="Sarah Johnson" class="comment-avatar">
+                <div>
+                    <div class="comment-author">Sarah Johnson</div>
+                    <div class="comment-date">June 17, 2023 at 2:34 PM</div>
+                </div>
+            </div>
+            <p>Great overview of what's coming! I'm particularly excited about the React compiler. The amount of time I spend optimizing re-renders is significant. Do we have any timeline for when this might land in a stable release?</p>
+        </div>
+
+        <div class="comment">
+            <div class="comment-header">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&auto=format" alt="Michael Chen" class="comment-avatar">
+                <div>
+                    <div class="comment-author">Michael Chen</div>
+                    <div class="comment-date">June 16, 2023 at 9:15 AM</div>
+                </div>
+            </div>
+            <p>Thanks for the detailed write-up. The Actions API looks promising. I'm curious how this will integrate with existing state management solutions like Redux or Zustand. Any insights on that?</p>
+        </div>
+
+        <div class="comment-form">
+            <h3 class="content-title">Leave a Comment</h3>
+            <form>
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea id="comment" class="form-control" required></textarea>
+                </div>
+                <button type="submit" class="btn">Post Comment</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+@code{
+
+    private string content = @"<p>The React ecosystem is evolving at an unprecedented pace, with 2024 poised to be a landmark year for the library. As we stand on the brink of React 19, it's clear that the team at Meta is doubling down on performance, developer experience, and meeting the growing demands of modern web applications.</p>
+<p>In this comprehensive overview, we'll explore the most significant changes coming to React, how they'll impact your workflow, and what you need to know to prepare for the future of frontend development.</p>";
+
+    private Dictionary<string, object> editorConf = new Dictionary<string, object>
+    {
+        {"plugins", "image"},
+        {"toolbar", "image"},
+        {"image_list", new[] 
+            {
+                new {title = "dns",value = "/images/dns.png"} 
+            } 
+        },
+        {"license_key","gpl"},
+                {"image_advtab","true"}
+
+
+  };
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+}
